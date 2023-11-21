@@ -23,7 +23,8 @@ export default class TodoListItem extends React.Component {
           onClick={onToggleDone}
           style={style}
         >
-          {label}, Дедлайн: {date.toLocaleDateString()}
+          {label} <br />
+          <span className="deadline">Дедлайн: {date.toLocaleDateString()} </span>
         </span>
         <div className="list-btn">
           <button className="list-btn-change">
@@ -31,8 +32,6 @@ export default class TodoListItem extends React.Component {
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
               y="0px"
-              width="100"
-              height="100"
               viewBox="0 0 50 50"
               className="btn-svg"
             >
@@ -44,8 +43,6 @@ export default class TodoListItem extends React.Component {
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
               y="0px"
-              width="100"
-              height="100"
               viewBox="0 0 50 50"
               className="btn-svg"
             >
@@ -59,8 +56,6 @@ export default class TodoListItem extends React.Component {
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
               y="0px"
-              width="100"
-              height="100"
               viewBox="0 0 30 30"
               className="btn-svg"
             >

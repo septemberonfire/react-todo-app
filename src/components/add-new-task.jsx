@@ -51,7 +51,9 @@ export default class AddNewTask extends React.Component {
     }
     return (
       <div>
-        <button onClick={this.openPopup}>Добавить задачу</button>
+        <button onClick={this.openPopup}
+        className="btn"
+        >Добавить задачу</button>
 
         <div className={popupClassName} >
           <form className="popup"
@@ -82,6 +84,7 @@ export default class AddNewTask extends React.Component {
             value={this.state.date.toISOString().slice(0, 10)}
             />
             <button
+            className="btn"
             >Добавить</button>
           </form>
         </div>

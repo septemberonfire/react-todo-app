@@ -1,7 +1,7 @@
 import AppHeader from "./components/app-header";
 import TodoList from "./components/todo-list";
-import SearchPanel from "./components/search-panel";
 import AddNewTask from "./components/add-new-task";
+import Filters from "./components/filters";
 import React from "react";
 
 export default class App extends React.Component {
@@ -9,10 +9,49 @@ export default class App extends React.Component {
 
   state = {
     todoData: [
-      this.createTodoItem('Помыть посуду', new Date()),
-      this.createTodoItem('Изучить Реакт', new Date()),
-      this.createTodoItem('Поиграть на гитаре', new Date()),
+      this.createTodoItem("Помыть посуду", new Date()),
+      this.createTodoItem("Изучить Реакт", new Date()),
+      this.createTodoItem("Поиграть на гитаре", new Date()),
     ],
+    selectedValue: "value1",
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.selectedValue !== prevState.selectedValue) {
+      console.log(prevState.todoData);
+      console.log(this.state.selectedValue);
+      if (this.state.selectedValue === "value3") {
+        this.setState(({todoData}) => {
+          const newA = [...todoData].sort((a, b) => a.date > b.date ? 1 : -1);
+          return {
+            todoData: newA
+          };
+        });
+      }
+      if (this.state.selectedValue === "value2") {
+        this.setState(({todoData}) => {
+          const newA = [...todoData].sort((a, b) => a.date < b.date ? 1 : -1);
+          return {
+            todoData: newA
+          };
+        });
+      }
+      if (this.state.selectedValue === "value1") {
+        this.setState(({todoData}) => {
+          return {
+            todoData: prevState.todoData
+          };
+        });
+      }
+    }
+  }
+
+  setSelectedValue = (v) => {
+    this.setState((state) => {
+      return {
+        selectedValue: v,
+      };
+    });
   };
 
   deleteItem = (id) => {
@@ -32,7 +71,7 @@ export default class App extends React.Component {
       date,
       important: false,
       done: false,
-      id: this.maxId++
+      id: this.maxId++,
     };
   }
 
@@ -48,23 +87,27 @@ export default class App extends React.Component {
   };
 
   onToggleDone = (id) => {
-    this.setState(({todoData})=> {
+    this.setState(({ todoData }) => {
       const idx = todoData.findIndex((el) => el.id === id);
-      const oldItem = todoData[idx]
-      const newItem = {...oldItem, done: !oldItem.done}
-      const newArr = [...todoData.slice(0, idx), newItem, ...todoData.slice(idx + 1)];
+      const oldItem = todoData[idx];
+      const newItem = { ...oldItem, done: !oldItem.done };
+      const newArr = [
+        ...todoData.slice(0, idx),
+        newItem,
+        ...todoData.slice(idx + 1),
+      ];
 
       return {
-        todoData: newArr
-      }
-    })
+        todoData: newArr,
+      };
+    });
   };
 
   render() {
     return (
       <>
         <AppHeader />
-        <SearchPanel />
+        <Filters onValueSelected={this.setSelectedValue} />
         <TodoList
           todos={this.state.todoData}
           onDeleted={this.deleteItem}

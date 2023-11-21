@@ -8,17 +8,19 @@
   width: 100%;
   height: fit-content;
   gap: 16px;
-  padding: 24px;
+  padding: 48px;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .popup-wrap {
   position: fixed;
-  visibility: hidden; 
+  visibility: hidden;
   opacity: 0;
   position: fixed;
   top: 0;
   left: 0;
-  background-color:rgba(5, 0, 10, 0.30);
+  background-color: rgba(5, 0, 10, 0.2);
   width: 100%;
   height: 100vh;
   z-index: 6;
@@ -35,4 +37,17 @@
 
 .popup-close {
   cursor: pointer;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.btn {
+  border: 1px solid aqua;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 }
