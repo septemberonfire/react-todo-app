@@ -1,0 +1,38 @@
+.popup {
+  position: relative;
+  background-color: white;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  gap: 16px;
+  padding: 24px;
+}
+
+.popup-wrap {
+  position: fixed;
+  visibility: hidden; 
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color:rgba(5, 0, 10, 0.30);
+  width: 100%;
+  height: 100vh;
+  z-index: 6;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.popup-wrap.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup-close {
+  cursor: pointer;
+}
