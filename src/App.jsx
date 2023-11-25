@@ -20,8 +20,6 @@ export default class App extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.selectedValue !== prevState.selectedValue) {
-      console.log(prevState.todoData);
-      console.log(this.state.selectedValue);
       if (this.state.selectedValue === "value3") {
         this.setState(({ todoData }) => {
           const newA = [...todoData].sort((a, b) => (a.date > b.date ? 1 : -1));
