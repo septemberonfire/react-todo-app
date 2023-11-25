@@ -1,7 +1,7 @@
 import TodoListItem from "./todo-list-item";
 import "../styles/todo-list.css";
 
-const TodoList = ({ todos, onDeleted, onToggleDone }) => {
+const TodoList = ({ todos, onDeleted, onToggleDone, onOpenTask }) => {
   const elements = todos.map((item) => {
     const { id, ...itemProps } = item;
     return (
@@ -11,6 +11,8 @@ const TodoList = ({ todos, onDeleted, onToggleDone }) => {
         {...itemProps} 
 
         onToggleDone={() => onToggleDone(id)}
+
+        onOpenTask={() => onOpenTask(id)}
         />
         
       </li>
